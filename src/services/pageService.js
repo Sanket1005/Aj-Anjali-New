@@ -15,12 +15,15 @@ import api from "../api/wordpress";
 // ── Helper: resolve an ACF image field to a usable URL ──
 // Handles both "Return Format: Image URL" (string) and
 // "Return Format: Image ID" (number) just in case.
+// NOTE: deliberately NOT using ?_fields=source_url here —
+// that query param causes 500 errors on this WordPress
+// install. Fetching the full object works reliably instead.
 export async function resolveImage(value) {
   if (!value) return "";
   if (typeof value === "string" && value.startsWith("http")) return value;
   if (typeof value === "number" || /^\d+$/.test(value)) {
     try {
-      const res = await api.get(`/media/${value}?_fields=source_url`);
+      const res = await api.get(`/media/${value}`);
       return res.data?.source_url || "";
     } catch (_) {
       return "";
@@ -103,9 +106,12 @@ export const getBrands = async () => {
   return items.filter((b) => b.name);
 };
 
-// ── SERVICES (Custom Post Type: service) ─────────────
+// ── SERVICES (Custom Post Type: services) ───────────
+// NOTE: WordPress post type slug is "services" (plural),
+// even though we originally planned "service" — the route
+// that actually exists on the server is /wp/v2/services.
 export const getServices = async () => {
-  const response = await api.get("/service?per_page=50&_fields=id,acf");
+  const response = await api.get("/services?per_page=50&_fields=id,acf");
   const items = await Promise.all(
     response.data.map(async (post) => {
       const acf = post.acf || {};
