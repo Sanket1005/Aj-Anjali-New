@@ -1,0 +1,50 @@
+/* ─────────────────────────────────────────────
+   src/styles/marquee.css
+   Scrolling ticker strip below the hero.
+   ───────────────────────────────────────────── */
+
+.marquee-strip {
+  background: var(--brand-darker);
+  overflow: hidden;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Track — doubled items to create seamless loop */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 24s linear infinite;
+}
+
+/* Pause on hover */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Individual word */
+.marquee-item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.35rem;
+  color: rgba(255,255,255,0.38);
+  white-space: nowrap;
+  padding: 0 6px;
+}
+
+/* Dot separator between words */
+.marquee-sep {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #c44a25;
+  flex-shrink: 0;
+  margin: 0 22px;
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

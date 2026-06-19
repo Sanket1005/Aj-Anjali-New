@@ -1,0 +1,55 @@
+/* ─────────────────────────────────────────────
+   src/styles/globals.css
+   Global reset, CSS variables, body defaults.
+   ───────────────────────────────────────────── */
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Brand palette — change these to retheme the whole site */
+  --brand-primary:  #b53017;   /* terracotta red     */
+  --brand-mid:      #c8421f;   /* mid orange-red     */
+  --brand-light:    #d86035;   /* lighter burnt      */
+  --brand-warm:     #bf7050;   /* warm highlight     */
+  --brand-dark:     #1a0a06;   /* near-black bg      */
+  --brand-darker:   #0e0503;   /* menu bg            */
+
+  /* Text */
+  --text-white:     #ffffff;
+  --text-muted:     rgba(255,255,255,0.72);
+  --text-faint:     rgba(255,255,255,0.42);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Sizes */
+  --nav-h: 88px;       /* nav height (normal) */
+  --nav-h-slim: 58px;  /* nav height (scrolled) */
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  cursor: none;           /* hidden — replaced by custom cursor */
+  overflow-x: hidden;
+  background: var(--brand-dark);
+  color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default button/link styles */
+button { font: inherit; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }

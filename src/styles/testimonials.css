@@ -1,0 +1,253 @@
+/* ─────────────────────────────────────────────
+   src/styles/testimonials.css
+   Stylish 3D carousel testimonials
+   ───────────────────────────────────────────── */
+
+.testi {
+  background: #fff;
+  padding: 75px 0 75px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* subtle background decoration */
+.testi::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fce8e210 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── HEADER ── */
+.testi__header {
+  text-align: center;
+  margin-bottom: 0px;
+  padding: 0 24px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.testi__header.in-view { opacity: 1; transform: none; }
+
+.testi__pill {
+  display: inline-flex;
+  background: #fce8e2;
+  border-radius: 999px;
+  padding: 7px 20px;
+  font-family:Inter;
+  font-size: .65rem; font-weight: 600;
+  letter-spacing: .14em; color: #c94a2a;
+  margin-bottom: 16px;
+}
+
+.testi__title {
+  font-family: var(--f-display);
+  font-size: 35px;
+  font-weight: 700; 
+  color: #c94a2a;
+}
+
+/* ── CAROUSEL STAGE ── */
+.testi__stage {
+  position: relative;
+  height: 420px;
+  perspective: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── CARD ── */
+.testi__card {
+  position: absolute;
+  width: 420px;
+  background: #fff;
+  border: 1.5px solid #ece8e5;
+  border-radius: 24px;
+  padding: 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  cursor: none;
+  will-change: transform, opacity;
+  transition:
+    transform .7s cubic-bezier(.22,1,.36,1),
+    opacity   .7s cubic-bezier(.22,1,.36,1),
+    box-shadow .7s ease,
+    border-color .7s ease,
+    filter .7s ease;
+}
+
+/* Active (center) card */
+.testi__card--active {
+  transform: translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+  filter: blur(0px);
+  box-shadow: 0 32px 80px rgba(200,70,40,.18), 0 8px 24px rgba(0,0,0,.08);
+  border-color: #f0c0b0;
+  z-index: 10;
+}
+
+/* Right card */
+.testi__card--right {
+  transform: translateX(360px) scale(.78) rotateY(-18deg);
+  opacity: .55;
+  filter: blur(1.5px);
+  box-shadow: none;
+  z-index: 5;
+}
+
+/* Left card */
+.testi__card--left {
+  transform: translateX(-360px) scale(.78) rotateY(18deg);
+  opacity: .55;
+  filter: blur(1.5px);
+  box-shadow: none;
+  z-index: 5;
+}
+
+/* Far right */
+.testi__card--far-right {
+  transform: translateX(580px) scale(.6) rotateY(-28deg);
+  opacity: .2;
+  filter: blur(3px);
+  z-index: 1;
+}
+
+/* Far left */
+.testi__card--far-left {
+  transform: translateX(-580px) scale(.6) rotateY(28deg);
+  opacity: .2;
+  filter: blur(3px);
+  z-index: 1;
+}
+
+/* Hidden */
+.testi__card--hidden {
+  transform: translateX(700px) scale(.4);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── QUOTE DECO ── */
+.testi__quote-deco {
+  position: absolute;
+  top: 16px; right: 24px;
+  font-family: Inter;
+  font-size: 6rem; line-height: 1;
+  color: #fce8e2;
+  pointer-events: none;
+  user-select: none;
+  transition: color .4s;
+}
+.testi__card--active .testi__quote-deco { color: #f5cfc5; }
+
+/* ── STARS ── */
+.testi__stars {
+  display: flex; gap: 3px;
+  margin-bottom: 18px;
+}
+.testi__star {
+  color: #e8622a;
+  font-size: 1rem;
+}
+
+/* ── BODY ── */
+.testi__body {
+  font-family: Inter;
+  font-size: .9rem; font-weight: 400;
+  line-height: 1.8; color: #3a2a25;
+  flex: 1; margin-bottom: 28px;
+  position: relative; z-index: 1;
+}
+
+/* ── AUTHOR ── */
+.testi__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.testi__avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #e8622a;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--f-body);
+  font-size: .95rem; font-weight: 700; color: #fff;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.testi__card--active .testi__avatar { transform: scale(1.08); }
+.testi__author-name {
+  font-family: Inter;
+  font-size: .88rem; font-weight: 600; color: #1a0a06;
+  margin-bottom: 2px;
+}
+.testi__author-role {
+  font-family: Inter;
+  font-size: .75rem; color: #9a7060;
+}
+
+/* ── CONTROLS ── */
+.testi__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 0px;
+}
+
+.testi__arrow {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 1.5px solid #e0d0cc;
+  background: none; cursor: none;
+  display: flex; align-items: center; justify-content: center;
+  color: #c94a2a;
+  transition: background .25s, border-color .25s,
+              transform .35s cubic-bezier(.34,1.56,.64,1),
+              box-shadow .25s;
+}
+.testi__arrow:hover {
+  background: #c94a2a;
+  border-color: #c94a2a;
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 8px 24px rgba(200,70,40,.3);
+}
+
+/* dots */
+.testi__dots {
+  display: flex; gap: 8px; align-items: center;
+}
+.testi__dot {
+  width: 8px; height: 8px; border-radius: 999px;
+  background: #e0d0cc; border: none; cursor: none;
+  transition: width .4s cubic-bezier(.34,1.56,.64,1),
+              background .3s;
+  padding: 0;
+}
+.testi__dot--active {
+  width: 28px;
+  background: #c94a2a;
+}
+
+/* ── PROGRESS LINE ── */
+.testi__progress-wrap {
+  width: 160px; height: 2px;
+  background: #f0e8e5;
+  border-radius: 2px;
+  overflow: hidden;
+  display: none; /* hidden — using dots instead */
+}
+
+@media (max-width: 768px) {
+  .testi__stage { height: 480px; perspective: 800px; }
+  .testi__card { width: 320px; padding: 32px 24px 28px; }
+  .testi__card--right  { transform: translateX(240px) scale(.72) rotateY(-14deg); }
+  .testi__card--left   { transform: translateX(-240px) scale(.72) rotateY(14deg); }
+  .testi__card--far-right { transform: translateX(380px) scale(.5) rotateY(-22deg); opacity: .15; }
+  .testi__card--far-left  { transform: translateX(-380px) scale(.5) rotateY(22deg); opacity: .15; }
+}
