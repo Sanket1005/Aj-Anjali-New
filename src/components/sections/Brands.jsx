@@ -4,29 +4,42 @@
 // Features:
 //   • Dual-row infinite marquee (row 1 left, row 2 right)
 //   • Faded edge masks (pure CSS)
-//   • Each pill: logo icon + brand name
-//   • Hover: pill lifts + glows + name turns coral
+//   • Each pill: just the logo image, no text
+//   • Hover: pill lifts + glows
 //   • Marquee pauses on hover
 //   • Counter row (brands / events / years)
 //   • Scroll-triggered header + counter reveal
 //   • Bottom CTA "Work With Me" button
 //
-// HOW TO USE REAL LOGOS:
-//   Replace the colored letter icon with:
-//   <img src="/brands/radio-mirchi.png" alt="Radio Mirchi"
-//        style={{width:36,height:36,objectFit:'contain'}} />
+// LOGOS COME FROM WORDPRESS:
+//   getBrands() fetches the "brand" custom post type —
+//   only the ACF "logo" image field is used. The BRANDS
+//   array below is just a fallback shown if WordPress
+//   has no brands yet (or the request fails).
 // ─────────────────────────────────────────────
 
 import { useEffect, useRef, useState } from 'react'
 import '../../styles/brands.css'
 import { getBrands } from '../../services/pageService'
 
-// ── FALLBACK — shown if WordPress has no brands yet ──
-const FALLBACK_BRANDS = [
-  { id: 1, name: 'Radio Mirchi', initials: 'RM', color: '#e8622a', logo: '' },
-  { id: 2, name: 'Red FM',       initials: 'RF', color: '#cc1a1a', logo: '' },
-  { id: 3, name: 'Big FM',       initials: 'BF', color: '#1a6acc', logo: '' },
-  { id: 4, name: 'Fever 104',    initials: 'F',  color: '#cc7a1a', logo: '' },
+// ── FALLBACK — shown only if WordPress has no brands yet ──
+const BRANDS = [
+  { id: 1,  logo: '/brands/radio-mirchi.png' },
+  { id: 2,  logo: '/brands/red-fm.png' },
+  { id: 3,  logo: '/brands/big-fm.png' },
+  { id: 4,  logo: '/brands/fever-104.png' },
+  { id: 5,  logo: '/brands/myntra.png' },
+  { id: 6,  logo: '/brands/nykaa.png' },
+  { id: 7,  logo: '/brands/stylebazaar.png' },
+  { id: 8,  logo: '/brands/flipkart.png' },
+  { id: 9,  logo: '/brands/patna-live.png' },
+  { id: 10, logo: '/brands/bihar-now.png' },
+  { id: 11, logo: '/brands/etv-bihar.png' },
+  { id: 12, logo: '/brands/zee-bihar.png' },
+  { id: 13, logo: '/brands/sony-liv.png' },
+  { id: 14, logo: '/brands/amazon-india.png' },
+  { id: 15, logo: '/brands/boat-lifestyle.png' },
+  { id: 16, logo: '/brands/mamaearth.png' },
 ]
 
 const STATS = [
@@ -43,22 +56,11 @@ function LogoPill({ brand, onHover }) {
       onMouseEnter={() => onHover?.(true)}
       onMouseLeave={() => onHover?.(false)}
     >
-      {brand.logo ? (
-        <img
-          src={brand.logo}
-          alt={brand.name}
-          style={{ width: 36, height: 36, objectFit: 'contain' }}
-        />
-      ) : (
-        <div
-          className="brands__logo-icon"
-          style={{ background: brand.color }}
-          aria-hidden="true"
-        >
-          {brand.initials}
-        </div>
-      )}
-      <span className="brands__logo-name">{brand.name}</span>
+      <img
+        src={brand.logo}
+        alt=""
+        className="brands__logo-icon"
+      />
     </div>
   )
 }
@@ -83,7 +85,7 @@ export default function Brands({ onHover }) {
   const headerRef  = useRef(null)
   const counterRef = useRef(null)
   const ctaRef     = useRef(null)
-  const [brands, setBrands] = useState(FALLBACK_BRANDS)
+  const [brands, setBrands] = useState(BRANDS) // start with fallback list
 
   useEffect(() => {
     let cancelled = false

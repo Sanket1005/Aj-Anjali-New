@@ -89,6 +89,7 @@ export const getPortfolioItems = async () => {
 };
 
 // ── BRANDS (Custom Post Type: brand) ─────────────────
+// Logo-only — just the brand image, no name/initials/color needed.
 export const getBrands = async () => {
   const response = await api.get("/brand?per_page=50&_fields=id,acf");
   const items = await Promise.all(
@@ -96,16 +97,12 @@ export const getBrands = async () => {
       const acf = post.acf || {};
       return {
         id: post.id,
-        name: acf.brand_name || "",
-        initials: acf.initials || "",
-        color: acf.color || "#888888",
         logo: await resolveImage(acf.logo),
       };
     })
   );
-  return items.filter((b) => b.name);
+  return items.filter((b) => b.logo); // only keep items that actually have a logo
 };
-
 // ── SERVICES (Custom Post Type: services) ───────────
 // NOTE: WordPress post type slug is "services" (plural),
 // even though we originally planned "service" — the route
