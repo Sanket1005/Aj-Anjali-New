@@ -151,9 +151,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
+    height: 84px;
+    min-width: 140px;
+    padding: 16px 32px;
     border: 1.5px solid #ece8e5;
-    border-radius: 999px;
+    border-radius: 20px;
     background: #fff;
     cursor: none;
     transition:
@@ -171,8 +173,10 @@
   }
   
   .brands__logo-icon {
-    width: 36px;
-    height: 36px;
+    max-height: 44px;
+    max-width: 130px;
+    width: auto;
+    height: auto;
     object-fit: contain;
     flex-shrink: 0;
   }
