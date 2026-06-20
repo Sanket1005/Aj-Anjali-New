@@ -1,191 +1,229 @@
 /* ─────────────────────────────────────────────
    src/styles/brands.css
-   Worked-with logos — infinite dual-row marquee
+   Brand collaborations — counters + logo marquee
    ───────────────────────────────────────────── */
 
    .brands {
-    background: #fff;
-    padding: 75px 0 75px;
+    background: #fdf3e9;
+    padding: 96px 0;
     overflow: hidden;
     position: relative;
   }
   
+  /* soft warm glow + faint grid */
   .brands::before {
     content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(200,70,40,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,70,40,.04) 1px, transparent 1px);
-    background-size: 60px 60px;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 0%, rgba(201, 74, 42, .08), transparent 45%),
+      radial-gradient(circle at 0% 100%, rgba(191, 112, 80, .06), transparent 40%);
     pointer-events: none;
   }
   
   /* ── HEADER ── */
   .brands__header {
     text-align: center;
+    max-width: 760px;
+    margin: 0 auto 56px;
     padding: 0 24px;
-    margin-bottom: 64px;
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+    transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
   }
   .brands__header.in-view { opacity: 1; transform: none; }
   
   .brands__pill {
     display: inline-flex;
-    background: #fce8e2;
+    align-items: center;
+    gap: 8px;
+    background: #f3dcc4;
     border-radius: 999px;
-    padding: 7px 20px;
-    font-family: Inter;
-    font-size: .65rem; font-weight: 600;
-    letter-spacing: .14em; color: #c94a2a;
-    margin-bottom: 16px;
+    padding: 8px 20px;
+    font-family: var(--font-body);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    color: #b5631f;
+    margin-bottom: 20px;
+  }
+  .brands__pill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c94a2a;
   }
   
   .brands__title {
-    font-family: var(--f-display);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 600; font-style: italic;
-    color: #1a0a06;
-    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.1;
+    color: #2a1a0d;
+    margin-bottom: 16px;
   }
   
   .brands__sub {
-    font-family: Inter;
-    font-size: .9rem; font-weight: 500;
-    color: #9a7060;
+    font-family: var(--font-body);
+    font-size: .95rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #8a6a4a;
+    max-width: 560px;
+    margin: 0 auto;
   }
   
   /* ── COUNTER ROW ── */
   .brands__counter-row {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    gap: 56px;
-    margin-bottom: 20px;
-    position: relative; z-index: 1;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 72px;
+    position: relative;
+    z-index: 1;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity .7s ease .2s, transform .7s ease .2s;
+    transition: opacity .7s ease .15s, transform .7s ease .15s;
   }
   .brands__counter-row.in-view { opacity: 1; transform: none; }
   
-  .brands__counter-sep {
-    width: 1px; height: 40px;
-    background: #ece8e5;
+  .brands__counter-item {
+    position: relative;
+    text-align: center;
+    padding: 4px 48px;
   }
+  .brands__counter-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 48px;
+    background: rgba(42, 26, 13, .12);
+  }
+  
   .brands__counter-val {
-    font-family: var(--f-display);
-    font-size: 2.4rem; font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
     color: #c94a2a;
     line-height: 1;
-    text-align: center;
   }
+  
   .brands__counter-lbl {
-    font-family: var(--f-body);
-    font-size: .68rem; font-weight: 500;
-    letter-spacing: .12em;
-    color: #9a7060;
-    margin-top: 4px;
-    text-align: center;
+    font-family: var(--font-body);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: #8a6a4a;
+    margin-top: 10px;
   }
   
   /* ── TRACKS WRAPPER ── */
   .brands__tracks {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    position: relative; z-index: 1;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   
+  /* fade edges */
   .brands__tracks::before,
   .brands__tracks::after {
     content: '';
     position: absolute;
-    top: 0; bottom: 0;
-    width: 180px;
+    top: 0;
+    bottom: 0;
+    width: 160px;
     z-index: 2;
     pointer-events: none;
   }
   .brands__tracks::before {
     left: 0;
-    background: linear-gradient(to right, #fff 0%, transparent 100%);
+    background: linear-gradient(to right, #fdf3e9 0%, transparent 100%);
   }
   .brands__tracks::after {
     right: 0;
-    background: linear-gradient(to left, #fff 0%, transparent 100%);
+    background: linear-gradient(to left, #fdf3e9 0%, transparent 100%);
   }
   
-  .brands__track-overflow {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    justify-content: center;
+  /* ── SCROLL WINDOW + TRACK ── */
+  .brands__scrollwindow {
+    overflow: hidden;
   }
   
-  /* ── SINGLE TRACK ── */
   .brands__track {
     display: flex;
+    gap: 20px;
     width: max-content;
-    gap: 28px;
   }
-  .brands__track--fwd { animation: brandsFwd 28s linear infinite; }
-  .brands__track--rev { animation: brandsRev 28s linear infinite; }
+  .brands__track--fwd { animation: brandsFwd 45s linear infinite; }
+  .brands__track--rev { animation: brandsRev 45s linear infinite; }
   
-  .brands__track--fwd:hover,
-  .brands__track--rev:hover { animation-play-state: paused; }
+  
   
   @keyframes brandsFwd {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 10px)); }
   }
   @keyframes brandsRev {
-    0%   { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    from { transform: translateX(calc(-50% - 10px)); }
+    to   { transform: translateX(0); }
   }
   
-  /* ── LOGO PILL — just the logo image ── */
-  .brands__logo-pill {
-    display: inline-flex;
+  /* ── LOGO CARD ── */
+  .brands__logocard {
+    width: 200px;
+    height: 120px;
+    background: #fff;
+    border: 1px solid rgba(42, 26, 13, .06);
+    border-radius: 18px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    height: 84px;
-    min-width: 140px;
-    padding: 16px 32px;
-    border: 1.5px solid #ece8e5;
-    border-radius: 20px;
-    background: #fff;
-    cursor: none;
-    transition:
-      border-color .3s,
-      box-shadow .3s,
-      transform .35s cubic-bezier(.34,1.56,.64,1),
-      background .3s;
+    padding: 26px;
     flex-shrink: 0;
+    box-shadow: 0 4px 18px rgba(42, 26, 13, .05);
+    transition:
+      transform .35s cubic-bezier(.34, 1.56, .64, 1),
+      box-shadow .35s ease,
+      border-color .35s ease;
   }
-  .brands__logo-pill:hover {
-    border-color: #e0a090;
-    background: #fdf5f2;
-    box-shadow: 0 8px 28px rgba(200,70,40,.12);
-    transform: translateY(-4px) scale(1.04);
+  .brands__logocard:hover {
+    transform: translateY(-8px);
+    border-color: rgba(201, 74, 42, .2);
+    box-shadow: 0 18px 44px rgba(201, 74, 42, .14);
   }
   
   .brands__logo-icon {
-    max-height: 44px;
-    max-width: 130px;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    flex-shrink: 0;
+    filter: grayscale(100%);
+    opacity: .62;
+    transition: filter .35s ease, opacity .35s ease;
+  }
+  .brands__logocard:hover .brands__logo-icon {
+    filter: grayscale(0%);
+    opacity: 1;
   }
   
   /* ── BOTTOM CTA ── */
   .brands__cta {
     text-align: center;
-    margin-top: 64px;
-    position: relative; z-index: 1;
+    margin-top: 72px;
+    position: relative;
+    z-index: 1;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity .7s ease, transform .7s ease;
@@ -193,10 +231,11 @@
   .brands__cta.in-view { opacity: 1; transform: none; }
   
   .brands__cta-text {
-    font-family: Inter;
-    font-size: .9rem; font-weight: 500;
-    color: #9a7060;
-    margin-bottom: 20px;
+    font-family: var(--font-body);
+    font-size: .95rem;
+    font-weight: 500;
+    color: #8a6a4a;
+    margin-bottom: 22px;
   }
   
   .brands__cta-btn {
@@ -207,18 +246,45 @@
     color: #fff;
     border: none;
     border-radius: 999px;
-    padding: 14px 34px;
-    font-family: Inter;
-    font-size: .75rem; font-weight: 700;
+    padding: 15px 36px;
+    font-family: var(--font-body);
+    font-size: .75rem;
+    font-weight: 700;
     letter-spacing: .13em;
     text-decoration: none;
     cursor: none;
-    transition: background .25s,
-                transform .35s cubic-bezier(.34,1.56,.64,1),
-                box-shadow .3s;
+    transition:
+      background .25s ease,
+      transform .35s cubic-bezier(.34, 1.56, .64, 1),
+      box-shadow .3s ease;
+  }
+  .brands__cta-btn::after {
+    content: '→';
+    font-size: .95rem;
+    transition: transform .3s ease;
   }
   .brands__cta-btn:hover {
-    background: #a83820;
-    transform: scale(1.05);
-    box-shadow: 0 12px 36px rgba(200,70,40,.3);
+    background: #ab3d22;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 38px rgba(201, 74, 42, .3);
+  }
+  .brands__cta-btn:hover::after { transform: translateX(4px); }
+  
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .brands { padding: 72px 0; }
+    .brands__counter-item { padding: 4px 28px; }
+    .brands__counter-val { font-size: 2.2rem; }
+    .brands__logocard { width: 168px; height: 104px; padding: 22px; }
+    .brands__tracks::before,
+    .brands__tracks::after { width: 64px; }
+  }
+  
+  @media (max-width: 480px) {
+    .brands__title { font-size: 2rem; }
+    .brands__counter-row { gap: 8px 0; }
+    .brands__counter-item { padding: 4px 20px; }
+    .brands__counter-item:not(:last-child)::after { height: 36px; }
+    .brands__counter-val { font-size: 1.9rem; }
+    .brands__logocard { width: 140px; height: 88px; padding: 18px; }
   }

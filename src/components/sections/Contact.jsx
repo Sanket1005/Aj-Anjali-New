@@ -117,6 +117,14 @@ function ContactForm({ onHover }) {
       data.append('select-660', form.service)
       data.append('your-message', form.message)
 
+      // CF7 REST API requires these meta fields — without the unit tag
+      // CF7 often rejects the request as a validation/spam failure.
+      data.append('_wpcf7', CF7_FORM_ID)
+      data.append('_wpcf7_version', '5.9')
+      data.append('_wpcf7_locale', 'en_US')
+      data.append('_wpcf7_unit_tag', `wpcf7-f${CF7_FORM_ID}-p1-o1`)
+      data.append('_wpcf7_container_post', '0')
+
       const res = await fetch(
         `${CF7_BASE_URL}/wp-json/contact-form-7/v1/contact-forms/${CF7_FORM_ID}/feedback`,
         { method: 'POST', body: data }
@@ -129,7 +137,8 @@ function ContactForm({ onHover }) {
       if (result.status === 'mail_sent') {
         setStatus('success')
       } else {
-        console.error('CF7 submission issue:', result)
+        // Log the real reason so the actual problem is visible
+        console.error('CF7 submission issue:', result.status, result.message, result.invalid_fields)
         setStatus('error')
       }
     } catch (err) {
