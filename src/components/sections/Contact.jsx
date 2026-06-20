@@ -26,7 +26,7 @@ const CF7_FORM_ID   = '128'
 const INFO_ITEMS = [
   {
     label: 'Email',
-    value: 'anjali@rjanjali.com',   // ← your email
+    value: 'rjanjali.business@gmail.com',   // ← your email
     icon: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
         <rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -34,15 +34,7 @@ const INFO_ITEMS = [
       </svg>
     ),
   },
-  {
-    label: 'Phone',
-    value: '+91 98765 43210',        // ← your number
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M3 3C3 3 4 7 6 9C8 11 12 12.5 12 12.5L14 10.5C14 10.5 12 9 11.5 8.5C11 8 12 7 12.5 7.5C13 8 14.5 9.5 14.5 9.5C14.5 9.5 14 13.5 11.5 14C9 14.5 3.5 9 3 6.5C2.5 4 6 3.5 6 3.5L7.5 5C6.5 6 6 7 5.5 7C5 7 3 3 3 3Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
+  
   {
     label: 'Location',
     value: 'Patna, Bihar — India',

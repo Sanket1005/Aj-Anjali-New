@@ -13,7 +13,7 @@ import { resolveImage } from '../../services/pageService'
 
 // ── Stats are hardcoded (no ACF Pro Repeater needed) ──────────────────────
 const STATS = [
-  { value: '8+',   label: 'YEARS ON AIR' },
+  { value: '19+',   label: 'YEARS ON AIR' },
   { value: '50M+', label: 'LISTENERS'    },
   { value: '200+', label: 'EPISODES'     },
 ]

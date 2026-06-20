@@ -34,7 +34,7 @@ const SERVICE_LINKS = [
 
 const CONTACT_ITEMS = [
   {
-    label: 'anjali@rjanjali.com',
+    label: 'rjanjali.business@gmail.com',
     icon: (
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <rect x="1" y="3" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
@@ -42,14 +42,7 @@ const CONTACT_ITEMS = [
       </svg>
     ),
   },
-  {
-    label: '+91 98765 43210',
-    icon: (
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M2 2.5C2 2.5 3 5 5 7C7 9 9.5 11 9.5 11L11.5 9.5C11.5 9.5 10 8 9.5 7.5C9 7 10 6 10.5 6.5C11 7 12.5 8.5 12.5 8.5C12.5 8.5 12 11.5 9.5 12C7 12.5 2 7 1.5 4.5C1 2 4.5 1.5 4.5 1.5L6 3C5 4 4.5 5 4 5C3.5 5 2 2.5 2 2.5Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
+  
   {
     label: 'Patna, Bihar — India',
     icon: (

@@ -5,7 +5,7 @@ import { getBrands } from '../../services/pageService'
 const STATS = [
   { value: '40+', label: 'BRANDS WORKED WITH' },
   { value: '200+', label: 'LIVE EVENTS' },
-  { value: '8+', label: 'YEARS EXPERIENCE' },
+  { value: '19+', label: 'YEARS EXPERIENCE' },
 ]
 
 function LogoPill({ brand, onHover }) {
