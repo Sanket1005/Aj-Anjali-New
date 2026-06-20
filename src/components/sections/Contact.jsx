@@ -25,6 +25,30 @@ const CF7_FORM_ID   = '128'
 
 const INFO_ITEMS = [
   {
+    label: 'Email',
+    value: 'rjanjali.business@gmail.com',   // ← your email
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M2 6L9 10.5L16 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  
+  {
+    label: 'Location',
+    value: 'Patna, Bihar — India',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 2C6.2 2 4 4.2 4 7C4 11 9 16 9 16C9 16 14 11 14 7C14 4.2 11.8 2 9 2Z" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="9" cy="7" r="2" stroke="currentColor" strokeWidth="1.5"/>
+      </svg>
+    ),
+  },
+]
+
+const SOCIALS = [
+  {
     label: 'Instagram',
     href: 'https://www.instagram.com/rjanjalimirchi/',
     icon: (
@@ -65,17 +89,6 @@ const INFO_ITEMS = [
 </svg>
     ),
   },
-]
-
-const SOCIALS = [
-  { label: 'Instagram', href: 'https://instagram.com',
-    icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="12" height="12" rx="3.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="9" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/><circle cx="13" cy="5" r=".9" fill="currentColor"/></svg> },
-  { label: 'YouTube', href: 'https://youtube.com',
-    icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="3" stroke="currentColor" strokeWidth="1.5"/><path d="M7.5 7L11.5 9L7.5 11V7Z" fill="currentColor"/></svg> },
-  { label: 'Twitter', href: 'https://twitter.com',
-    icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3.5L8 10L3 15H4.5L8.7 11L12 15H15L9.8 7.8L14.5 3.5H13L9.2 7L6 3.5H3Z" fill="currentColor"/></svg> },
-  { label: 'LinkedIn', href: 'https://linkedin.com',
-    icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="1.5"/><line x1="6" y1="8" x2="6" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><circle cx="6" cy="6" r=".9" fill="currentColor"/><path d="M9.5 13V10.5C9.5 9.4 10.4 8.5 11.5 8.5C12.6 8.5 13.5 9.4 13.5 10.5V13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg> },
 ]
 
 // Must match the [select* select-660 ...] options in the CF7 form template
